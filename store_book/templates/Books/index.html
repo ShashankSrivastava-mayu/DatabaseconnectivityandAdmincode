@@ -1,0 +1,16 @@
+{% extends "Books/base.html" %}
+
+{% block page_title%}My Books{% endblock %}
+
+{% block content%}
+    <ul>
+        {% for book in books %}
+            {% comment %} <li><a href="{% url "Book" book.id %}">{{book.Title}}</li> {% endcomment %}
+{% comment %} we have used url here to add link in our title for index function  {% endcomment %}
+{% comment %} we can also use get_absolute_url in place of this link but we have to define it first in our views,py code {% endcomment %}
+            <li><a href="{{ book.get_absolute_url}}">{{book.Title}}</li>
+        {% endfor %}
+    </ul>
+    <hr>
+    <p>Total number of books: {{book_counts}}</p>
+{% endblock %}
